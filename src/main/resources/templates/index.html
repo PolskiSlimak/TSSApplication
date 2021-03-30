@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Application</title>
+</head>
+<body>
+    <h1 th:text="'Author: ' + ${author}"></h1>
+    <h2 th:text="'Application Version: ' + ${appVersion}"></h2>
+    <h3>Employee data</h3>
+    <table border='2' style='width: 600px'>
+    <tr>
+        <th style="width: 100px;">First name</th>
+        <th style="width: 100px;">Last name</th>
+        <th>Hire date</th>
+        <th>Department name</th>
+        <th>Click below to delete specific record</th>
+    </tr>
+    <tr th:each="employee, iter: ${employees}">
+        <td th:text="${employee.getFirstName()}"></td>
+        <td th:text="${employee.getLastName()}"></td>
+        <td th:text="${employee.getHireDate()}" style="width: 100px;"></td>
+        <td th:text="${employee.getDepartment()}"></td>
+        <td style="text-align: center;">
+            <form class="button" th:action="@{/deleteEmployee}"  method="POST" style="display: inline-block;">
+                <button type="submit" th:name="index" th:value="${iter.index}">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </table>
+    <h3>Add employee:</h3>
+    <form th:action="@{/addEmployee}" th:object="${newEmployee}" method="post">
+        <p>First name: <input type="text" th:field="*{firstName}"></p>
+        <p>Last name: <input type="text" th:field="*{lastName}"></p>
+        <p>Hire date: <input type="date" th:field="*{{hireDate}}"></p>
+        <p>Department: <input type="text" th:field="*{department}"></p>
+        <p><input type="submit" value="Add employee"></p>
+    </form>
+</body>
+</html>
