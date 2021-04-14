@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class EmployeeDTO {
+    private Integer employeeId;
     private String firstName;
     private String lastName;
     @DateTimeFormat (pattern = "yyyy-MM-dd")

@@ -25,7 +25,7 @@
         <td th:text="${employee.getJob()}"></td>
         <td style="text-align: center;">
             <form class="button" th:action="@{/deleteEmployee}"  method="POST" style="display: inline-block;">
-                <button type="submit" th:name="index" th:value="${iter.index}">Delete</button>
+                <button type="submit" th:name="index" th:value="${employee.employeeId}">Delete</button>
             </form>
         </td>
     </tr>
