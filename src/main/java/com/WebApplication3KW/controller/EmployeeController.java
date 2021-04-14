@@ -17,8 +17,9 @@ public class EmployeeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("employees", employeeService.getEmployeeDTOList());
-        model.addAttribute("newEmployee", new EmployeeDTO());
+        EmployeeDTO employeeDTO = EmployeeDTO.builder().build();
+        model.addAttribute("employees", employeeService.getEmployeeList());
+        model.addAttribute("newEmployee", employeeDTO);
         model.addAttribute("appVersion", "1.0");
         model.addAttribute("author", "Wawoczny Kamil");
         return "index";
