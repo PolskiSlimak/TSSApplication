@@ -22,7 +22,7 @@ public class EmployeeController {
         model.addAttribute("newEmployee", employeeDTO);
         model.addAttribute("appVersion", "1.0");
         model.addAttribute("author", "Wawoczny Kamil");
-        return "index";
+        return "main-page";
     }
 
     @PostMapping("/addEmployee")
