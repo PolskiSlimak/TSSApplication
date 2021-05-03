@@ -39,5 +39,8 @@
         <p>Job name: <input type="text" th:field="*{job}"></p>
         <p><input type="submit" value="Add employee"></p>
     </form>
+    <form class="button" th:action="@{/logout}"  method="POST" style="display: inline-block;">
+        <button type="submit" th:name="logout">Logout</button>
+    </form>
 </body>
 </html>

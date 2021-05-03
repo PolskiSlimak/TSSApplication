@@ -36,11 +36,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
+            .antMatchers("/").access("hasRole('ROLE_ADMIN')")
             .anyRequest().authenticated()
             .and()
             .formLogin()
             .defaultSuccessUrl("/", true)
-            .permitAll()
             .and()
             .logout()
             .permitAll()

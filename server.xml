@@ -69,10 +69,10 @@
     <Connector port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443" />
-   <Connector port="8098" protocol="org.apache.coyote.http11.Http11NioProtocol" 
+   <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
    SSLEnabled="true" maxThreads="150" scheme="https" 
    secure="true" clientAuth="false" sslProtocol="TLS"
-   keystoreFile="D:\studia\2semestr\TSS\WebApplication3KW\src\main\resources\keystore.jks" keystorePass="password"/>
+   keystoreFile="conf/keystore.jks" keystorePass="password"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
