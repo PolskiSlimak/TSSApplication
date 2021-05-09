@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MessageDTO {
-    private String name;
+    private String text;
 }
