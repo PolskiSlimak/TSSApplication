@@ -1,7 +1,8 @@
 var stompClient = null;
 
 function connect() {
-    var socket = new SockJS('/chat');
+    var relativePath = location.pathname;
+    var socket = new SockJS(relativePath + 'chat');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         console.log('Connected: ' + frame);
