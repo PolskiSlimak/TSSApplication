@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 @Controller
 public class GreetingController {
-    @MessageMapping("/chat")
+    @MessageMapping("/time")
     @SendTo("/topic/messages")
     public String send() {
         DateTimeFormatter europeanDateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
