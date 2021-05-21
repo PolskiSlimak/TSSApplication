@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
     <script src="app.js"></script>
 </head>
 <body>
@@ -47,8 +48,8 @@
     <form class="button" th:action="@{/logout}"  method="POST" style="display: inline-block;">
         <button type="submit" th:name="logout">Logout</button>
     </form>
-    <div id="responseDiv">
-        <p id="response"></p>
+    <div class="container">
+        <canvas id="chart"></canvas>
     </div>
 </body>
 </html>
