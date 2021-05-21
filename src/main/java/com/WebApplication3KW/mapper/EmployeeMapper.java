@@ -24,4 +24,12 @@ public class EmployeeMapper {
         employeeEntity.setHireDate(employeeDTO.getHireDate());
         return employeeEntity;
     }
+
+    public static void overrideEmployeeEntity(EmployeeEntity employeeEntity, EmployeeDTO employeeDTO) {
+        employeeEntity.setFirstName(employeeDTO.getFirstName());
+        employeeEntity.setLastName(employeeDTO.getLastName());
+        employeeEntity.setDepartmentName(employeeDTO.getDepartment());
+        employeeEntity.setJobName(employeeDTO.getJob());
+        employeeEntity.setHireDate(employeeDTO.getHireDate());
+    }
 }

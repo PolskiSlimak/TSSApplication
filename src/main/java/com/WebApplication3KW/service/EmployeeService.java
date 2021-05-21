@@ -20,13 +20,19 @@ public class EmployeeService {
         return mapToDTOList(employees);
     }
 
-    public void addEmployee(EmployeeDTO employeeDTO) {
-        EmployeeEntity employeeEntity = EmployeeMapper.mapToEmployeeEntity(employeeDTO);
+    public void addEmployee(EmployeeEntity employeeEntity) {
         employeeRepository.save(employeeEntity);
     }
 
     public void deleteEmployee(int index) {
         employeeRepository.deleteById(index);
+    }
+
+    public void editEmployee(EmployeeDTO employeeDTO) {
+        Integer id = employeeDTO.getEmployeeId();
+        EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
+        EmployeeMapper.overrideEmployeeEntity(employeeEntity, employeeDTO);
+        employeeRepository.save(employeeEntity);
     }
 
     private List<EmployeeDTO> mapToDTOList(List<EmployeeEntity> employees) {

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChartController {
     private final ChartService chartService;
 
-    @MessageMapping("/time")
+    @MessageMapping("/chart")
     @SendTo("/topic/messages")
     public ChartDTO send() {
         return chartService.createRandomNumbers();

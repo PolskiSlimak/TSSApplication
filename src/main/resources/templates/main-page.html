@@ -21,7 +21,7 @@
         <th>Hire date</th>
         <th>Department name</th>
         <th>Job name</th>
-        <th>Click below to delete specific record</th>
+        <th>Click below to delete or edit specific record</th>
     </tr>
     <tr th:each="employee, iter: ${employees}">
         <td th:text="${employee.getFirstName()}"></td>
@@ -33,6 +33,7 @@
             <form class="button" th:action="@{/deleteEmployee}"  method="POST" style="display: inline-block;">
                 <button type="submit" th:name="index" th:value="${employee.employeeId}">Delete</button>
             </form>
+            <button th:onclick="|showFormForEdit('${employee.employeeId}')|">Edit</button>
         </td>
     </tr>
     </table>
@@ -41,12 +42,28 @@
         <p>First name: <input type="text" th:field="*{firstName}"></p>
         <p>Last name: <input type="text" th:field="*{lastName}"></p>
         <p>Hire date: <input type="date" th:field="*{{hireDate}}"></p>
-        <p>Department: <input type="text" th:field="*{department}"></p>
-        <p>Job name: <input type="text" th:field="*{job}"></p>
+        <p>Department: <input type="text" th:field="*{departmentName}"></p>
+        <p>Job name: <input type="text" th:field="*{jobName}"></p>
+        <p>Email: <input type="text" th:field="*{email}"></p>
         <p><input type="submit" value="Add employee"></p>
     </form>
+    <div id="edit-form" style="display: none">
+    <h3>Edit employee:</h3>
+        <form th:action="@{/editEmployee}" th:object="${editEmployee}" method="post">
+            <p style="display: none">Id: <input type="text" th:field="*{employeeId}"></p>
+            <p>First name: <input type="text" th:field="*{firstName}"></p>
+            <p>Last name: <input type="text" th:field="*{lastName}"></p>
+            <p>Hire date: <input type="date" th:field="*{{hireDate}}"></p>
+            <p>Department: <input type="text" th:field="*{department}"></p>
+            <p>Job name: <input type="text" th:field="*{job}"></p>
+            <p><p><input type="submit" value="Edit employee"></p>
+        </form>
+    </div>
     <form class="button" th:action="@{/logout}"  method="POST" style="display: inline-block;">
         <button type="submit" th:name="logout">Logout</button>
+    </form>
+    <form class="button" th:action="@{/employees}"  method="GET" style="display: inline-block;">
+        <button type="submit" th:name="emp">REST JSON</button>
     </form>
     <div class="container">
         <canvas id="chart"></canvas>
