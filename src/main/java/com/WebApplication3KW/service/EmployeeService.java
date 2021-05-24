@@ -20,6 +20,11 @@ public class EmployeeService {
         return mapToDTOList(employees);
     }
 
+    public EmployeeDTO getParticularEmployee(Integer id) {
+        EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
+        return EmployeeMapper.mapToEmployeeDTO(employeeEntity);
+    }
+
     public void addEmployee(EmployeeEntity employeeEntity) {
         employeeRepository.save(employeeEntity);
     }

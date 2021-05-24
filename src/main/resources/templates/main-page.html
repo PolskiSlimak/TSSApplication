@@ -39,23 +39,23 @@
     </table>
     <h3>Add employee:</h3>
     <form th:action="@{/addEmployee}" th:object="${newEmployee}" method="post">
-        <p>First name: <input type="text" th:field="*{firstName}"></p>
-        <p>Last name: <input type="text" th:field="*{lastName}"></p>
-        <p>Hire date: <input type="date" th:field="*{{hireDate}}"></p>
-        <p>Department: <input type="text" th:field="*{departmentName}"></p>
-        <p>Job name: <input type="text" th:field="*{jobName}"></p>
-        <p>Email: <input type="text" th:field="*{email}"></p>
+        <p>First name: <input type="text" th:field="*{firstName}" required></p>
+        <p>Last name: <input type="text" th:field="*{lastName}" required></p>
+        <p>Hire date: <input type="date" th:field="*{{hireDate}}" required></p>
+        <p>Department: <input type="text" th:field="*{departmentName}" required></p>
+        <p>Job name: <input type="text" th:field="*{jobName}" required></p>
+        <p>Email: <input type="text" th:field="*{email}" required></p>
         <p><input type="submit" value="Add employee"></p>
     </form>
     <div id="edit-form" style="display: none">
     <h3>Edit employee:</h3>
         <form th:action="@{/editEmployee}" th:object="${editEmployee}" method="post">
             <p style="display: none">Id: <input type="text" th:field="*{employeeId}"></p>
-            <p>First name: <input type="text" th:field="*{firstName}"></p>
-            <p>Last name: <input type="text" th:field="*{lastName}"></p>
-            <p>Hire date: <input type="date" th:field="*{{hireDate}}"></p>
-            <p>Department: <input type="text" th:field="*{department}"></p>
-            <p>Job name: <input type="text" th:field="*{job}"></p>
+            <p>First name: <input type="text" th:field="*{firstName}" id="firstName-edit" required></p>
+            <p>Last name: <input type="text" th:field="*{lastName}" id="lastName-edit" required></p>
+            <p>Hire date: <input type="date" th:field="*{{hireDate}}" id="hireDate-edit" required></p>
+            <p>Department: <input type="text" th:field="*{department}" required></p>
+            <p>Job name: <input type="text" th:field="*{job}" required></p>
             <p><p><input type="submit" value="Edit employee"></p>
         </form>
     </div>

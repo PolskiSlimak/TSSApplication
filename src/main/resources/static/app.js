@@ -33,12 +33,27 @@ function updateChart(chartReceived) {
 function showFormForEdit(id) {
     var formStyle = document.getElementById("edit-form").style.display;
     if (formStyle === "none") {
-        document.getElementById("edit-form").style.display = "inline-block";
-        document.getElementById("employeeId").value = id;
+        setFormData(id);
     } else if (formStyle === "inline-block") {
         document.getElementById("edit-form").style.display = "none";
     }
 
+}
+function setFormData(id) {
+    var url = location.href;
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url +'employee/' + id);
+    xhr.send();
+    xhr.onload = function() {
+        var employee = JSON.parse(xhr.response);
+        document.getElementById("edit-form").style.display = "inline-block";
+        document.getElementById("employeeId").value = employee.employeeId;
+        document.getElementById("firstName-edit").value = employee.firstName;
+        document.getElementById("lastName-edit").value = employee.lastName;
+        document.getElementById("hireDate-edit").value = employee.hireDate;
+        document.getElementById("department").value = employee.department;
+        document.getElementById("job").value = employee.job;
+    };
 }
 window.addEventListener("load", connect, false);
 setInterval(function(){ stompClient.send("/app/chart"); }, 5000);
